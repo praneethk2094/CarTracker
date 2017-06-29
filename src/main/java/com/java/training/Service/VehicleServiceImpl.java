@@ -16,11 +16,14 @@ import java.util.List;
 @Service
 public class VehicleServiceImpl implements VehicleService {
 
-    @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
-    @Autowired
-    private VehicleRepository vehicleRepository;
 
-   /* public Vehicle save(Vehicle vehicle) {
+    private final VehicleRepository vehicleRepository;
+
+    @Autowired
+    public VehicleServiceImpl(VehicleRepository vehicleRepository) {
+        this.vehicleRepository = vehicleRepository;
+    }
+    /* public Vehicle save(Vehicle vehicle) {
      return   vehicleRepository.save(vehicle);
     }*/
 

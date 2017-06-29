@@ -14,15 +14,18 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by prane on 6/28/2017.
+ * Created by praneeth on 6/28/2017.
  */
 @Service
 public class AlertsServiceImpl implements AlertsService {
-    @Autowired
-    private AlertsRepository alertsRepository;
+    private final AlertsRepository alertsRepository;
+    private final VehicleRepository vehicleRepository;
 
     @Autowired
-    private VehicleRepository vehicleRepository;
+    public AlertsServiceImpl(AlertsRepository alertsRepository, VehicleRepository vehicleRepository) {
+        this.alertsRepository = alertsRepository;
+        this.vehicleRepository = vehicleRepository;
+    }
 
     @Transactional
     public void CreateAndSaveAlerts(VehicleReading vehicleReading) {

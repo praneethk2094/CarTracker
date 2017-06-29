@@ -12,19 +12,19 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by prane on 6/27/2017.
+ * Created by praneeth on 6/27/2017.
  */
 @Service
 public class VehicleReadingServiceImpl implements VehicleReadingsService {
 
-    @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
-    @Autowired
-    private VehicleReadingRepository vehicleReadingRepository;
+    private final VehicleReadingRepository vehicleReadingRepository;
+    private final AlertsService alertsService;
 
-    @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
     @Autowired
-    private AlertsService alertsService;
-
+    public VehicleReadingServiceImpl(VehicleReadingRepository vehicleReadingRepository, AlertsService alertsService) {
+        this.vehicleReadingRepository = vehicleReadingRepository;
+        this.alertsService = alertsService;
+    }
 
     @Transactional
     public VehicleReading saveReadings(VehicleReading vehicleReading) {
