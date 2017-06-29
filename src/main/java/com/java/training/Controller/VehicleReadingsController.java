@@ -1,5 +1,6 @@
 package com.java.training.Controller;
 
+import com.java.training.Aspect.BoundaryLogger;
 import com.java.training.Service.VehicleReadingsService;
 import com.java.training.entities.VehicleReading;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +15,22 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping(value = "/readings")
 public class VehicleReadingsController {
-    @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
-    @Autowired
+    
     private VehicleReadingsService vehicleReadingsService;
 
+    @Autowired
+    public VehicleReadingsController(VehicleReadingsService vehicleReadingsService) {
+        this.vehicleReadingsService = vehicleReadingsService;
+    }
+
+    @BoundaryLogger
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
     VehicleReading AddVehicleReadings(@RequestBody VehicleReading vehicleReadings) {
         return vehicleReadingsService.saveReadings(vehicleReadings);
     }
 
-
+    @BoundaryLogger
     @RequestMapping(method = RequestMethod.GET, value = "/find/{Vehicleid}")
     public @ResponseBody
     List<VehicleReading> findVehicleReadingByID(@PathVariable String Vehicleid) {
@@ -32,11 +38,13 @@ public class VehicleReadingsController {
 
     }
 
+    @BoundaryLogger
     @RequestMapping(method = RequestMethod.DELETE, value = "/delete")
     public void Delete(@RequestBody VehicleReading vehicleReading) {
         vehicleReadingsService.deleteVehicleReading(vehicleReading);
     }
 
+    @BoundaryLogger
     @RequestMapping(method = RequestMethod.DELETE, value = "/{vehicleID}")
     public void Delete(@PathVariable String VehicleId) {
         vehicleReadingsService.deleteAllVehicleReading(VehicleId);
