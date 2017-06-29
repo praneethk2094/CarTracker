@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by prane on 6/27/2017.
+ * Created by praneeth on 6/27/2017.
  */
 @Service
 public class VehicleServiceImpl implements VehicleService {
