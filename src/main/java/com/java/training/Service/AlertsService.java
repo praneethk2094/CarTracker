@@ -1,9 +1,10 @@
 package com.java.training.Service;
 
+import com.java.training.entities.Alerts;
 import com.java.training.entities.VehicleReading;
 
 /**
- * Created by prane on 6/28/2017.
+ * Created by praneeth on 6/28/2017.
  */
 
 
