@@ -20,7 +20,15 @@ public class Vehicle {
     private float maxFuelVolume;
     private Date lastServiceDate;
 
-   /* @OneToMany(mappedBy="vin",cascade= CascadeType.ALL )
+    public Vehicle() {
+    }
+
+    public Vehicle(String vin, String make, String model) {
+        this.vin = vin;
+        this.make = make;
+        this.model = model;
+    }
+    /* @OneToMany(mappedBy="vin",cascade= CascadeType.ALL )
     @JsonIgnore
     private List<VehicleReading> vehicleReadings;*/
 
