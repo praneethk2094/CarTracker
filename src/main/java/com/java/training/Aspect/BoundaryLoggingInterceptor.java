@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class BoundaryLoggingInterceptor {
     private static Logger logger = Logger.getLogger(BoundaryLoggingInterceptor.class);
 
-    @Pointcut(value = "execution( public  * io.egen.training.controller.*.*(..))")
+    @Pointcut(value = "execution( public  * com.java.training.Controller.*.*(..))")
     public void logging() {
     }
 
