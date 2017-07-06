@@ -1,6 +1,7 @@
 package com.java.training.Controller;
 
 import com.java.training.Aspect.BoundaryLogger;
+import com.java.training.MessagingService.Sender;
 import com.java.training.Service.VehicleService;
 import com.java.training.entities.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,8 @@ import java.util.List;
 public class VehicleController {
 
     private VehicleService vehicleService;
-
+    @Autowired
+    private Sender sender;
     @Autowired
     public VehicleController(VehicleService vehicleService) {
         this.vehicleService = vehicleService;
@@ -27,6 +29,7 @@ public class VehicleController {
     @RequestMapping(method = RequestMethod.PUT)
     public @ResponseBody
     List<Vehicle> AddVehicles(@RequestBody List<Vehicle> vehicles) {
+        sender.messageSender("Vehicles Added");
         return vehicleService.saveVehicles(vehicles);
     }
 
